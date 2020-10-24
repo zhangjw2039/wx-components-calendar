@@ -1,0 +1,53 @@
+/* components/calendar/index.wxss */
+.calendar-container {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 
+                'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 
+                'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+/* 切换月份盒子 */
+.switchMonth-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40rpx;
+}
+.click {
+    padding: 20rpx;
+    /* border-radius: ; */
+}
+.click image {
+    display: block;
+    width: 40rpx;
+    height: 40rpx;
+}
+.switchMonth-container .date {
+    color: black;
+}
+.bg-grey {
+    background-color: #ebebeb;
+}
+/* 显示星期盒子 */
+.weekDay-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #323233;
+}
+.weekDay-container >view {
+    flex: 1;
+    text-align: center;
+    padding: 10rpx 0;
+}
+
+/* 当月盒子 */
+.days-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.days-item {
+    text-align: center;
+    color: #323233;
+}
+
