@@ -5,7 +5,7 @@
             <image src="./images/btn_pre.svg" />
         </view>
         
-        <view class="date">日期</view>
+        <view class="date">{{currentTime}}</view>
         <view class="click" bind:tap="nextMonth" hover-class="bg-grey">
             <image src="./images/btn_next.svg" />
         </view>
@@ -16,8 +16,14 @@
         </view>
     </view>
     <view class="days-container">
-        <view wx:for="{{days}}" wx:key="item.key" style="width: {{100/7}}%;height: {{itemHeight-10}}px;line-height: {{itemHeight-10}}px;margin-left: {{index == 0 ? item.key*100/7+'%' : 0}}" class="days-item">
-            <text style="color: {{item.color}}">{{item.title}}</text>
+        <view wx:for="{{days}}" 
+            wx:key="index" 
+            style="color: {{item.color}};width: {{100/7}}%;height: {{itemHeight-10}}px;line-height: {{itemHeight-10}}px;margin-left: {{index == 0 ? item.key*100/7+'%' : 0}}" 
+            class="days-item {{lightTime == item.time ? 'highlight' : ''}}"
+            bind:tap="onDayClick"
+            data-time="{{item.time}}"
+        >
+            <text>{{item.title}}</text>
         </view>
     </view>
 </view>
