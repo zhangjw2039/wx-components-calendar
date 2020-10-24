@@ -49,6 +49,16 @@
 .days-item {
     text-align: center;
     color: #323233;
+    position: relative;
+}
+.dot {
+    position: absolute;
+    bottom: 5rpx;
+    left: 50%;
+    transform: translate(-50%);
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 50%;
 }
 /* 显示高亮 */
 .highlight {

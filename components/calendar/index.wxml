@@ -24,6 +24,7 @@
             data-time="{{item.time}}"
         >
             <text>{{item.title}}</text>
+            <text wx:if="{{item.showDot}}" class="dot" style="background-color: {{item.dotColor}};"></text>
         </view>
     </view>
 </view>

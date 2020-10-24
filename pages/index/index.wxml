@@ -1,4 +1,4 @@
 <!--index.wxml-->
 <view>
-  <calendar num="{{123}}"></calendar>
+  <calendar></calendar>
 </view>

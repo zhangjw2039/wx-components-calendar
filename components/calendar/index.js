@@ -7,6 +7,14 @@ Component({
         defaultMonth: {
             type: String,
             value: ''
+        },
+        dayDot: {
+            type: Array,
+            value: [
+                {time: '2020-10-1', bgColor: '#00416d'},
+                {time: '2020-10-10', bgColor: '#1a1a2e'},
+                {time: '2020-10-21', bgColor: '#797a7e'},
+            ]
         }
     },
     // 组件私有属性
@@ -49,7 +57,7 @@ Component({
                 time = this.getYMD(new Date())
             }
             this.setData({
-                currentTime: this.getYMD(new Date(time))
+                currentTime: this.getYMD(new Date(time)),
             })
         },
         // 获取屏幕宽度 动态设置高度
@@ -68,16 +76,26 @@ Component({
             for (let i = 0; i < dayCount; i++) {
                 let day_item = {
                     title: i + 1,
-                    key: new Date(`${year}/${month}/${i + 1}`).getDay(),
-                    time: new Date(`${year}/${month}/${i + 1}`).getTime(),
-                    color: new Date(`${year}/${month}/${i + 1}`).getTime() <= new Date().getTime() ? '#323233' : '#99a8b2'
+                    key: new Date(`${year}-${month}-${i + 1}`).getDay(),
+                    time: new Date(`${year}-${month}-${i + 1}`).getTime(),
+                    color: new Date(`${year}-${month}-${i + 1}`).getTime() <= new Date().getTime() ? '#323233' : '#99a8b2'
                 }
                 days_temp.push(day_item)
+            }
+            
+            if(this.data.dayDot.length) {
+                this.data.dayDot.forEach(element => {
+                    const dot_time = new Date(element.time).getTime()
+                    const index = days_temp.findIndex(item => item.time == dot_time)
+                    if(index !== -1) {
+                        days_temp[index].showDot = true 
+                        days_temp[index].dotColor = element.bgColor
+                    }
+                })
             }
             this.setData({
                 days: days_temp,
             })
-            console.log(days_temp, this.data.lightTime)
         },
         // 切换月份
         preMonth() {
@@ -118,7 +136,6 @@ Component({
             if(new Date(time) > new Date()) {
                 return false
             }
-            console.log(time)
             this.setData({
                 lightTime: time
             })
